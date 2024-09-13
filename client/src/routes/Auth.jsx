@@ -1,13 +1,36 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { logo } from "../assets/index.js";
+import { useState } from "react";
+import LoginInterface from "../components/LoginInterface.jsx";
+import Signup from "../components/Signup.jsx";
+import Login from "../components/Login.jsx";
 
 const Auth = () => {
+  const [auth, setAuth] = useState("AUTH");
+  const renderAuthComponent = () => {
+    switch (auth) {
+      case "AUTH":
+        return <LoginInterface setAuth={setAuth} />;
+      case "SIGNUP":
+        return <Signup setAuth={setAuth} />;
+      case "ADMIN":
+        return <Login role={"ADMIN"} setAuth={setAuth} />;
+      case "CUSTOMER":
+        return <Login setAuth={setAuth} role={"CUSTOMER"} />;
+      case "SELLER":
+        return <Login role={"SELLER"} setAuth={setAuth} />;
+      default:
+        return null;
+    }
+  };
   return (
-    <div className="min-h-screen w-full flex items-center flex-col justify-center bg-zinc-900 text-white text-7xl font-bold">
-      Authorization
-      <button className="text-lg text-red-700 bg-red-50 px-5 py-3 rounded-xl mt-4">
-        <Link to="/dashboard">Dashboard</Link>
-      </button>
+    <div className="container flex min-h-screen w-full ">
+      <div className="container bg-zinc-900 text-white flex items-center justify-center ">
+        {renderAuthComponent()}
+      </div>
+      <div className="container flex items-center justify-center p-3">
+        <img src={logo} alt="" />
+      </div>
     </div>
   );
 };
