@@ -11,6 +11,7 @@ const login = (email, password, secretKey, navigate, setIsAuth) => {
     })
     .then((res) => {
       if (res.data) {
+        localStorage.setItem("token", res.data.token);
         setIsAuth(true);
         navigate("/dashboard");
       } else {
@@ -31,6 +32,7 @@ const signup = (email, password, fullName, navigate, setAuth) => {
     })
     .then((res) => {
       if (res.data) {
+        localStorage.setItem("token", res.data.token);
         setAuth("AUTH");
         window.alert("Signup successful!");
       } else {

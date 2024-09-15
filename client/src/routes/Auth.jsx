@@ -4,6 +4,7 @@ import { useState } from "react";
 import LoginInterface from "../components/LoginInterface.jsx";
 import Signup from "../components/Signup.jsx";
 import Login from "../components/Login.jsx";
+import { Link } from "react-router-dom";
 
 const Auth = ({ setIsAuth }) => {
   const [auth, setAuth] = useState("AUTH");
@@ -33,7 +34,9 @@ const Auth = ({ setIsAuth }) => {
         {renderAuthComponent()}
       </div>
       <div className="container flex items-center justify-center p-3">
-        <img src={logo} alt="" />
+        <Link to="/">
+          <img src={logo} alt="" />
+        </Link>
       </div>
     </div>
   );

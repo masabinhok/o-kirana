@@ -25,7 +25,7 @@ const App = () => {
             path="/dashboard"
             element={
               <ProtectedRoute isAuth={isAuth}>
-                <Dashboard />
+                <Dashboard setIsAuth={setIsAuth} />
               </ProtectedRoute>
             }
           />
