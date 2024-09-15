@@ -5,7 +5,7 @@ import LoginInterface from "../components/LoginInterface.jsx";
 import Signup from "../components/Signup.jsx";
 import Login from "../components/Login.jsx";
 
-const Auth = () => {
+const Auth = ({ setIsAuth }) => {
   const [auth, setAuth] = useState("AUTH");
   const renderAuthComponent = () => {
     switch (auth) {
@@ -14,11 +14,15 @@ const Auth = () => {
       case "SIGNUP":
         return <Signup setAuth={setAuth} />;
       case "ADMIN":
-        return <Login role={"ADMIN"} setAuth={setAuth} />;
+        return <Login role={"ADMIN"} setIsAuth={setIsAuth} setAuth={setAuth} />;
       case "CUSTOMER":
-        return <Login setAuth={setAuth} role={"CUSTOMER"} />;
+        return (
+          <Login setIsAuth={setIsAuth} setAuth={setAuth} role={"CUSTOMER"} />
+        );
       case "SELLER":
-        return <Login role={"SELLER"} setAuth={setAuth} />;
+        return (
+          <Login setIsAuth={setIsAuth} role={"SELLER"} setAuth={setAuth} />
+        );
       default:
         return null;
     }

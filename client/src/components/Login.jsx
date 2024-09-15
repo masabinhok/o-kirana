@@ -3,7 +3,7 @@ import { login } from "../services/auth";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
-const Login = ({ setAuth, role }) => {
+const Login = ({ setAuth, role, setIsAuth }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [secretKey, setSecretKey] = useState("");
@@ -11,7 +11,7 @@ const Login = ({ setAuth, role }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    login(email, password, secretKey, navigate);
+    login(email, password, secretKey, navigate, setIsAuth);
   };
   return (
     <div className="container flex-col flex items-center justify-center gap-4 p-3">

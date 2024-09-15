@@ -2,15 +2,16 @@ import axios from "axios";
 
 const backendURL = "http://127.0.0.1:3000/";
 
-const login = (email, password, secretKey, navigate) => {
+const login = (email, password, secretKey, navigate, setIsAuth) => {
   axios
-    .post(`${backendURL}user/login`, {
+    .post(`${backendURL}auth/login`, {
       email: email,
       password: password,
       secretKey: secretKey,
     })
     .then((res) => {
       if (res.data) {
+        setIsAuth(true);
         navigate("/dashboard");
       } else {
         console.log("login failed!");
@@ -23,7 +24,7 @@ const login = (email, password, secretKey, navigate) => {
 
 const signup = (email, password, fullName, navigate, setAuth) => {
   axios
-    .post(`${backendURL}user/signup`, {
+    .post(`${backendURL}auth/signup`, {
       email: email,
       password: password,
       fullName: fullName,
