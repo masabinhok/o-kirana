@@ -1,5 +1,3 @@
-import React from "react";
-
 const Explore = () => {
   return (
     <section className="w-full p-4 h-[700px] grid grid-cols-2 gap-4   bg-red-500  ">

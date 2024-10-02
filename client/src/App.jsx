@@ -1,4 +1,3 @@
-import React from "react";
 import Home from "./routes/Homepage";
 import Auth from "./routes/Auth";
 import Dashboard from "./routes/Dashboard";

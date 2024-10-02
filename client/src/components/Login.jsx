@@ -1,4 +1,3 @@
-import React from "react";
 import { login } from "../services/auth";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";

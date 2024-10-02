@@ -1,5 +1,3 @@
-import React from "react";
-
 const LoginInterface = ({ setAuth }) => {
   return (
     <div className="container flex-col flex items-center justify-center gap-4 p-3">

@@ -1,4 +1,3 @@
-import React from "react";
 import { logo } from "../assets/index.js";
 import { useState } from "react";
 import LoginInterface from "../components/LoginInterface.jsx";
