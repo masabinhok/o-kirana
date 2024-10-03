@@ -1,9 +1,5 @@
-import React from 'react'
-
 const Vegetables = () => {
-  return (
-    <div>Vegetables</div>
-  )
-}
+  return <div>Vegetables</div>;
+};
 
-export default Vegetables
+export default Vegetables;

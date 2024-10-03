@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const backendURL = "http://127.0.0.1:3000/";
+const backendURL = "https://o-kiranaapi.onrender.com/";
 
 const login = (email, password, secretKey, navigate, setIsAuth) => {
   axios
