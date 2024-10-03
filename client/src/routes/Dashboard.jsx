@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { logo } from "../assets";
@@ -53,7 +52,7 @@ const Dashboard = ({ setIsAuth }) => {
       .then((res) => {
         setUser(res.data.user);
       });
-  }, []);
+  }, [token]);
 
   return (
     <div className="flex flex-col items-center">
