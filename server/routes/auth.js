@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const userModel = require("../models/user");
 require("dotenv").config();
@@ -31,7 +31,7 @@ router.post("/signup", async (req, res) => {
     await user.save();
 
     const payload = { user: { id: user._id } };
-    const token = jwt.sign(payload, "secret");
+    const token = jwt.sign(payload, process.env.JWT_SECRET);
     res.json({ token });
   } catch (err) {
     console.error("Error during signup: ", err);
@@ -76,7 +76,7 @@ router.post("/login", async (req, res) => {
     console.log(user.role);
 
     const payload = { user: { id: user._id } };
-    const token = jwt.sign(payload, "secret", {
+    const token = jwt.sign(payload, process.env.JWT_SECRET, {
       expiresIn: "1h",
     });
     res.json({ token });
