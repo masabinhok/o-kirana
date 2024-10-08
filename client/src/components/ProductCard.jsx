@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { changeQuantity, addToBag } from "../utils/product";
+
 
 const ProductCard = ({
   productName,
@@ -7,28 +9,12 @@ const ProductCard = ({
   productQuantity,
 }) => {
   const [quantity, setQuantity] = useState(0);
-  const changeQuantity = (symbol, quantity) => {
-    if (symbol === "-") {
-      if (quantity >= 1) {
-        setQuantity(quantity - 1);
-      }
-    }
-    if (symbol === "+") {
-      if (quantity < productQuantity) {
-        setQuantity(quantity + 1);
-      }
-    }
-  };
-  const addToBag = () => {
-    console.log("clicked");
-    productQuantity -= quantity;
-    setQuantity(0);
-  };
+
   return (
     <div className="max-w-[400px] w-full rounded-xl overflow-hidden shadow-lg bg-zinc-900 cursor-pointer">
       {/* Product Image */}
       <img
-        className="w-full object-cover"
+        className="w-full max-h-[275px] h-full object-cover"
         src={productImageURL}
         alt={productName}
       />
@@ -53,7 +39,9 @@ const ProductCard = ({
           <button
             className="text-white shadow-inner shadow-zinc-700 rounded-xl p-3  border-b-1 w-full border-zinc-700 border bg-zinc-900"
             type="submit"
-            onClick={() => changeQuantity("-", quantity)}
+            onClick={() =>
+              changeQuantity("-", quantity, setQuantity, productQuantity)
+            }
           >
             -
           </button>
@@ -67,7 +55,9 @@ const ProductCard = ({
           <button
             className="text-white shadow-inner shadow-zinc-700 rounded-xl p-3  border-b-1 w-full border-zinc-700 border bg-zinc-900"
             type="submit"
-            onClick={() => changeQuantity("+", quantity)}
+            onClick={() =>
+              changeQuantity("+", quantity, setQuantity, productQuantity)
+            }
           >
             +
           </button>
@@ -77,7 +67,7 @@ const ProductCard = ({
           <button
             className="text-white shadow-inner shadow-zinc-700 rounded-xl p-3  border-b-1 w-full border-zinc-700 border bg-zinc-900"
             type="submit"
-            onClick={() => addToBag(quantity)}
+            onClick={() => addToBag(productQuantity, quantity, setQuantity)}
           >
             Add to Bag
           </button>

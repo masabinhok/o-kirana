@@ -15,6 +15,7 @@ app.use(cors());
 //import routes
 const authRoutes = require("./routes/auth");
 const dashboardRoutes = require("./routes/dashboard");
+const storeRoutes = require("./routes/store");
 
 //routes
 app.get("/", (req, res) => {
@@ -23,6 +24,7 @@ app.get("/", (req, res) => {
 
 app.use("/auth", authRoutes);
 app.use("/dashboard", dashboardRoutes);
+app.use("/store", storeRoutes);
 
 //server
 app.listen(PORT, () => {
